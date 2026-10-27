@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Masala Chai",
+    "category": "chai",
+    "price": 30.0,
+    "description": "Classic Indian spiced tea with ginger and cardamom",
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Adrak Chai",
+    "category": "chai",
+    "price": 35.0,
+    "description": "Extra ginger chai for cold evenings",
+    "available": true
+  },
+  {
+    "id": 3,
+    "name": "Elaichi Chai",
+    "category": "chai",
+    "price": 40.0,
+    "description": "Cardamom-infused premium chai",
+    "available": true
+  },
+  {
+    "id": 4,
+    "name": "Cutting Chai",
+    "category": "chai",
+    "price": 15.0,
+    "description": "Half-size strong chai, Mumbai tapri style",
+    "available": true
+  },
+  {
+    "id": 5,
+    "name": "Samosa",
+    "category": "snacks",
+    "price": 25.0,
+    "description": "Crispy potato-filled pastry with mint chutney",
+    "available": true
+  },
+  {
+    "id": 6,
+    "name": "Vada Pav",
+    "category": "snacks",
+    "price": 30.0,
+    "description": "Spicy potato fritter in a bun with garlic chutney",
+    "available": false
+  },
+  {
+    "id": 7,
+    "name": "Bun Maska",
+    "category": "snacks",
+    "price": 35.0,
+    "description": "Soft bun with generous butter, Irani cafe style",
+    "available": true
+  },
+  {
+    "id": 8,
+    "name": "Chai + Samosa Combo",
+    "category": "combos",
+    "price": 50.0,
+    "description": "Masala chai paired with a fresh samosa",
+    "available": true
+  },
+  {
+    "id": 9,
+    "name": "Chai + Bun Maska Combo",
+    "category": "combos",
+    "price": 60.0,
+    "description": "Elaichi chai with warm bun maska",
+    "available": true
+  },
+  {
+    "id": 10,
+    "name": "Office Party Pack",
+    "category": "combos",
+    "price": 250.0,
+    "description": "5 masala chais + 5 samosas for team meetings",
+    "available": true
+  }
+]
