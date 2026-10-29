@@ -1,6 +1,3 @@
-from contextlib import asynccontextmanager
-from typing import Annotated
-
 from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -10,20 +7,13 @@ from database import Base, SessionLocal, engine
 from models import MenuItem, MenuResponse
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)
-    try:
-        yield
-    finally:
-        engine.dispose()
+Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(
     title="MenuFlow — Restaurant Menu REST API",
     description="Restaurant menu REST API built with FastAPI, SQLAlchemy, and PostgreSQL.",
     version="0.1.0",
-    lifespan=lifespan,
 )
 
 def get_db():
@@ -34,9 +24,6 @@ def get_db():
         db.close()
 
 
-DatabaseSession = Annotated[Session, Depends(get_db)]
-
-
 @app.get("/")
 def root():
     return {"message": "Welcome to the Chai Point API!"}
@@ -44,7 +31,7 @@ def root():
 
 @app.get("/menu", response_model=MenuResponse)
 def get_menu(
-    db: DatabaseSession,
+    db: Session = Depends(get_db),
     category: str | None = Query(None, description="Filter by chai, snacks or combos"),
 ):
     statement = select(MenuItemRecord).order_by(MenuItemRecord.id)
@@ -57,7 +44,7 @@ def get_menu(
 
 
 @app.get("/menu/{item_id}", response_model=MenuItem)
-def get_item(item_id: int, db: DatabaseSession):
+def get_item(item_id: int, db: Session = Depends(get_db)):
     item = db.get(MenuItemRecord, item_id)
     if item is None:
         raise HTTPException(status_code=404, detail=f"Menu item with id {item_id} not found")
